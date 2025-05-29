@@ -3,7 +3,6 @@
 [![npm version](https://badge.fury.io/js/adf-lib-js.svg)](https://badge.fury.io/js/adf-lib-js)
 [![Test](https://github.com/lakmal98/adf-lib-js/actions/workflows/test.yml/badge.svg)](https://github.com/lakmal98/adf-lib-js/actions/workflows/test.yml)
 [![Release & Deploy](https://github.com/lakmal98/adf-lib-js/actions/workflows/ci.yml/badge.svg)](https://github.com/lakmal98/adf-lib-js/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/lakmal98/adf-lib-js/graph/badge.svg)](https://codecov.io/gh/lakmal98/adf-lib-js)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
@@ -273,8 +272,7 @@ This project uses GitHub Actions for continuous integration and automated publis
 1. **Test Workflow** (`.github/workflows/test.yml`)
    - Runs on every push and pull request to main/master
    - Tests against Node.js versions 16, 18, and 20
-   - Runs linting, tests with coverage, and builds the package
-   - Uploads coverage reports to Codecov
+   - Runs linting, tests, and builds the package
 
 2. **Release & Deploy Workflow** (`.github/workflows/ci.yml`)
    - Triggered when a new version tag is pushed (e.g., `v1.0.0`)
@@ -356,8 +354,8 @@ This library includes comprehensive unit tests with excellent coverage:
 # Run all tests
 npm test
 
-# Run tests with coverage report
-npm test -- --coverage
+# Run tests with coverage report (local only)
+npm run test:coverage
 
 # Run tests in watch mode
 npm run test:watch

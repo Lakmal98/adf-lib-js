@@ -21,9 +21,8 @@ The project uses GitHub Actions for continuous integration and deployment with t
 - Tests against Node.js versions 16, 18, and 20
 - Installs dependencies with `npm ci`
 - Runs ESLint for code quality
-- Executes Jest test suite with coverage
+- Executes Jest test suite
 - Builds the TypeScript code
-- Uploads coverage to Codecov (Node.js 18 only)
 
 **Matrix Strategy:**
 The workflow uses a matrix strategy to test against multiple Node.js versions, ensuring compatibility across supported versions.
@@ -112,10 +111,6 @@ Monitor workflow progress at:
 ### npm Publishing
 Check package status at:
 - `https://www.npmjs.com/package/adf-lib-js`
-
-### Coverage Reports
-View test coverage at:
-- `https://codecov.io/gh/[username]/adf-lib-js`
 
 ## Troubleshooting
 
