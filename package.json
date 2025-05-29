@@ -1,6 +1,6 @@
 {
   "name": "adf-lib-js",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A TypeScript library for creating and manipulating ADF (Atlassian Document Format) documents",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
