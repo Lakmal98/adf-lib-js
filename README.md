@@ -1,5 +1,11 @@
 # ADF Library
 
+[![npm version](https://badge.fury.io/js/adf-lib-js.svg)](https://badge.fury.io/js/adf-lib-js)
+[![Test](https://github.com/lakmal98/adf-lib-js/actions/workflows/test.yml/badge.svg)](https://github.com/lakmal98/adf-lib-js/actions/workflows/test.yml)
+[![Release & Deploy](https://github.com/lakmal98/adf-lib-js/actions/workflows/ci.yml/badge.svg)](https://github.com/lakmal98/adf-lib-js/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/lakmal98/adf-lib-js/graph/badge.svg)](https://codecov.io/gh/lakmal98/adf-lib-js)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Overview
 ADF Library is a TypeScript package for creating and manipulating ADF (Atlassian Document Format) documents. It provides a clean, type-safe API for building structured documents with support for headings, paragraphs, tables, and rich text formatting.
 
@@ -257,6 +263,82 @@ npm test
 ```bash
 npm run lint
 ```
+
+## CI/CD Pipeline
+
+This project uses GitHub Actions for continuous integration and automated publishing:
+
+### Workflows
+
+1. **Test Workflow** (`.github/workflows/test.yml`)
+   - Runs on every push and pull request to main/master
+   - Tests against Node.js versions 16, 18, and 20
+   - Runs linting, tests with coverage, and builds the package
+   - Uploads coverage reports to Codecov
+
+2. **Release & Deploy Workflow** (`.github/workflows/ci.yml`)
+   - Triggered when a new version tag is pushed (e.g., `v1.0.0`)
+   - Runs full test suite
+   - Creates a GitHub release with auto-generated release notes
+   - Publishes the package to npm
+
+### Publishing Process
+
+To publish a new version, you have two options:
+
+#### Option 1: Using the Release Script (Recommended)
+
+```bash
+# For patch version (0.2.1 → 0.2.2)
+npm run release:patch
+
+# For minor version (0.2.1 → 0.3.0)
+npm run release:minor
+
+# For major version (0.2.1 → 1.0.0)
+npm run release:major
+```
+
+The release script will automatically:
+- Run tests and linting
+- Build the package
+- Bump the version
+- Create a git commit and tag
+- Push to GitHub
+
+#### Option 2: Manual Process
+
+1. Update the version in `package.json`:
+   ```bash
+   npm version patch  # or minor/major
+   ```
+
+2. Push the tag to GitHub:
+   ```bash
+   git push origin --tags
+   ```
+
+#### What Happens Next
+
+Once a version tag is pushed, the CI pipeline will automatically:
+- Run all tests and linting
+- Create a GitHub release with auto-generated release notes
+- Publish the package to npm
+- Update the package registry
+
+You can monitor the progress in the GitHub Actions tab of your repository.
+
+### Setup Requirements
+
+For the CI/CD pipeline to work, you need to set up:
+
+1. **NPM_TOKEN**: Create an npm access token and add it as a repository secret
+   - Go to npmjs.com → Access Tokens → Generate New Token
+   - Add the token as `NPM_TOKEN` in GitHub repository secrets
+
+2. **Repository Environments**: 
+   - Create an `npm` environment in your repository settings
+   - This provides additional security for the publishing process
 
 ## Testing
 
