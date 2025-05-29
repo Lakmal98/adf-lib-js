@@ -76,11 +76,6 @@ jobs:
       - name: Build package
         run: npm run build
 
-      - name: Update package version
-        run: |
-          VERSION="${GITHUB_REF#refs/tags/v}"
-          npm version $VERSION --no-git-tag-version
-
       - name: Publish to npm
         run: npm publish
         env:
